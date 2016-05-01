@@ -74,13 +74,13 @@ def fit(data, tree, target_field, fields):
 
     subsets, values = split_by_field(data, max_gain_field)
 
-    print('=============')
-    print('Split by {} (gain: {})'.format(max_gain_field, max_gain))
-    for subset in subsets:
-        print('--------------')
-        print(subset)
-        print('--------------')
-    print('=============')
+    # print('')
+    # print('Разделение по атрибуту "{}" (gain: {}) на {} подмножества:'.format(max_gain_field, max_gain, len(subsets)))
+    # for i, subset in enumerate(subsets):
+    #     print('Подмножество {}'.format(i + 1))
+    #     print(subset.to_html(classes='table table-stripped'))
+    #     print('')
+    # print('<hr>')
 
     tree['field'] = max_gain_field
     children = tree['children'] = {}
@@ -122,6 +122,3 @@ def accuracy(tree, data, target_field):
     right_guesses = (ps == ys).sum()
 
     return float(right_guesses) / len(data), right_guesses, len(data)
-
-
-
